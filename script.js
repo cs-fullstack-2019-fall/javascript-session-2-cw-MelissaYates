@@ -89,7 +89,7 @@ function main() {
 
     // }
     console.log(`Total : ${calculator_instance.get_current_calculation_result()}`);
-    while(current_operation!=='x')
+    while(current_operation.toUpperCase() !=='X')
     {
         current_operation = prompt("Please enter 'ADD' for addition, 'SUB' to find the difference, 'MULT' to multiply, 'DIV' to divide and 'CLR' \n" +
             "to clear the console. Enter 'x' to exit.").toUpperCase();
