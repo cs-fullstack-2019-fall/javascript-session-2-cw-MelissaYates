@@ -55,12 +55,17 @@ class Calculator_class {
 
     // Multiplies the 2 numbers passed in and returns the result
     // It also updates the running total property
-    // TODO: Student implement the method for multiplication
+    multiply(first_number, second_number) {
+        this.update_current_calculation_result(first_number * second_number);
+        return this.current_calculation_result;
+    };
    
     // Divides the 2 numbers passed in and returns the result
     // It also updates the running total property
-    // TODO: Student implement the method for division
-
+    divides(first_number, second_number) {
+        this.update_current_calculation_result(first_number / second_number);
+        return this.current_calculation_result;
+    };
 }
 
 // END CLASS DEFINITION
@@ -77,24 +82,54 @@ function main() {
     // TODO: Student implement functionality to keep asking the User for next math operation
     //  until they enter 'x' to exit
     // Start by just displaying the current total
+    // let current_operation = prompt("Please enter 'ADD' for addition, 'SUB' to find the difference, 'MULT' to multiply, 'DIV' to divide and 'CLR' \n" +
+    //     "to clear the console. Enter x' to exit.").toUpperCase();
+    // while(current_operation!=='x' || current_operation !=='X'){
+
+
+    // }
     console.log(`Total : ${calculator_instance.get_current_calculation_result()}`);
+    while(current_operation!=='x')
+    {
+        current_operation = prompt("Please enter 'ADD' for addition, 'SUB' to find the difference, 'MULT' to multiply, 'DIV' to divide and 'CLR' \n" +
+            "to clear the console. Enter 'x' to exit.").toUpperCase();
 
-    // Get the operation to perform from the User
-    current_operation = prompt("Enter the math operation to be performed (ADD)")
-        .toUpperCase();
+        if(current_operation === 'X'){
+            continue;
+        }
+        // Get the operation to perform from the User
+        //current_operation = prompt("Enter the math operation to be performed (ADD)")
+        //     .toUpperCase();
 
-    // Get the 2 numbers for the operation
-    let first_int = parseInt(prompt(`Enter the 1st number for ${current_operation}`));
-    let second_int = parseInt(prompt(`Enter the 2nd number for ${current_operation}`));
+        // Get the 2 numbers for the operation
+        let first_int = parseInt(prompt(`Enter the 1st number for ${current_operation}`));
+        let second_int = parseInt(prompt(`Enter the 2nd number for ${current_operation}`));
 
-    // Perform the operation and display the results
-    // TODO: Student to implement support for CLR (clear), SUB (subtract), MULT (multiply), and DIV (division Calculator methods
-    switch (current_operation) {
-        case "ADD":
-            alert(`New sum Total : ${calculator_instance.add(first_int, second_int)}`);
+        // Perform the operation and display the results
+        // TODO: Student to implement support for CLR (clear), SUB (subtract), MULT (multiply), and DIV (division Calculator methods
+        switch (current_operation) {
+            case "ADD":
+                alert(`New sum Total : ${calculator_instance.add(first_int, second_int)}`);
+                break;
+            case "SUB":
+                alert(`New sum Total : ${calculator_instance.subtract(first_int, second_int)}`);
+                break;
+            case "MULT":
+                alert(`New sum Total : ${calculator_instance.multiply(first_int, second_int)}`);
+                break;
+            case "DIV":
+                alert(`New sum Total : ${calculator_instance.divides(first_int, second_int)}`);
+                break;
+            case "CLR":
+                calculator_instance.clear_calculation_result();
+                break;
+            default:
+                alert("This is not a Math operation.");
+
+        }
+        // Print the final calculation total in console for debugging purposes
+        console.log(`Final Total : ${calculator_instance.get_current_calculation_result(current_operation)}`);
     }
-    // Print the final calculation total in console for debugging purposes
-    console.log(`Final Total : ${calculator_instance.get_current_calculation_result()}`);
 }
 
 // Call Main function to start things up!
