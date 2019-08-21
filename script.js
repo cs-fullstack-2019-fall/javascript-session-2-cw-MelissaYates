@@ -123,6 +123,7 @@ function main() {
             case "CLR":
                 calculator_instance.clear_calculation_result();
                 break;
+                // NOTE : clear should be outside of your while loop so that you aren't prompted for num1 and num2
             default:
                 alert("This is not a Math operation.");
 
